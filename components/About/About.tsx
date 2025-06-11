@@ -74,7 +74,7 @@ export default function About() {
                 <div className="space-y-4">
                   <Image
                   unoptimized
-                    src="/about1.jpeg"
+                    src="public/about1.jpeg"
                     width={200}
                     height={250}
                     alt="Kike performing"
@@ -82,7 +82,7 @@ export default function About() {
                   />
                   <Image
                   unoptimized
-                    src="/about2.jpeg"
+                    src="public/about2.jpeg"
                     width={200}
                     height={200}
                     alt="Guitar close-up"
@@ -92,7 +92,7 @@ export default function About() {
                 <div className="space-y-4 mt-8">
                   <Image
                   unoptimized
-                    src="/about3.jpeg"
+                    src="public/about3.jpeg"
                     width={200}
                     height={200}
                     alt="Studio session"
@@ -100,7 +100,7 @@ export default function About() {
                   />
                   <Image
                   unoptimized
-                    src="/about4.jpeg"
+                    src="public/about4.jpeg"
                     width={200}
                     height={250}
                     alt="Live performance"
