@@ -73,7 +73,7 @@ export default function About() {
               <div className="grid grid-cols-2 gap-4">
                 <div className="space-y-4">
                   <Image
-                    src="/about1.jpeg?height=250&width=200"
+                    src="/public/about1.jpeg?height=250&width=200"
                     width="200"
                     height="250"
                     alt="Kike performing"
