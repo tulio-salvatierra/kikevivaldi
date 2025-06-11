@@ -7,6 +7,7 @@ import React from "react";
 
 
 export default function Hero() {
+  {console.log("./hero.jpg")}
     
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
@@ -103,7 +104,9 @@ export default function Hero() {
               height={600}
               alt="Kike Vivaldy with guitar"
               className="rounded-2xl shadow-2xl object-cover"
+              
             />
+          
           </div>
           {/* Artistic background elements */}
           <div className="absolute -top-8 -right-8 w-32 h-32 bg-gradient-to-br from-amber-400 to-orange-500 rounded-full opacity-20 blur-xl"></div>
