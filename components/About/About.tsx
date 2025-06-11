@@ -73,14 +73,14 @@ export default function About() {
               <div className="grid grid-cols-2 gap-4">
                 <div className="space-y-4">
                   <Image
-                    src="/public/about1.jpeg?height=250&width=200"
+                    src="/about1.jpeg"
                     width="200"
                     height="250"
                     alt="Kike performing"
                     className="rounded-lg object-cover w-full"
                   />
                   <Image
-                    src="/about2.jpeg?height=200&width=200"
+                    src="/about2.jpeg"
                     width="200"
                     height="200"
                     alt="Guitar close-up"
@@ -89,14 +89,14 @@ export default function About() {
                 </div>
                 <div className="space-y-4 mt-8">
                   <Image
-                    src="/about3.jpeg?height=200&width=200"
+                    src="/about3.jpeg"
                     width="200"
                     height="200"
                     alt="Studio session"
                     className="rounded-lg object-cover w-full"
                   />
                   <Image
-                    src="/about4.jpeg?height=250&width=200"
+                    src="/about4.jpeg"
                     width="200"
                     height="250"
                     alt="Live performance"
