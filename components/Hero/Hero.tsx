@@ -104,7 +104,7 @@ export default function Hero() {
               height={600}
               alt="Kike Vivaldy with guitar"
               className="rounded-2xl shadow-2xl object-cover"
-              
+              priority
             />
           
           </div>
