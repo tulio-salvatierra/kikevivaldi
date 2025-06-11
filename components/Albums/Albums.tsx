@@ -36,7 +36,7 @@ export default function Albums() {
             <div className="aspect-square mb-4 relative overflow-hidden rounded-lg">
               <Image
               unoptimized
-                src="public/sgj.webp"
+                src="/sgj.webp"
                 width={300}
                 height={300}
                 alt="Album 1"
@@ -71,7 +71,7 @@ export default function Albums() {
             <div className="aspect-square mb-4 relative overflow-hidden rounded-lg">
               <Image
               unoptimized
-                src="public/nf.webp"
+                src="/nf.webp"
                 width={300}
                 height={300}
                 alt="Album 2"
@@ -106,7 +106,7 @@ export default function Albums() {
             <div className="aspect-square mb-4 relative overflow-hidden rounded-lg">
               <Image
               unoptimized
-                src="public/csb.webp"
+                src="/csb.webp"
                 width={300}
                 height={300}
                 alt="Album 3"
