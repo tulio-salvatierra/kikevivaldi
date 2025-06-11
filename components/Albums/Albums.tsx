@@ -70,8 +70,8 @@ export default function Albums() {
             <div className="aspect-square mb-4 relative overflow-hidden rounded-lg">
               <Image
                 src="/nf.webp"
-                width="300"
-                height="300"
+                width={300}
+                height={300}
                 alt="Album 2"
                 className="object-cover w-full h-full group-hover:scale-105 transition-transform duration-300"
               />
@@ -104,8 +104,8 @@ export default function Albums() {
             <div className="aspect-square mb-4 relative overflow-hidden rounded-lg">
               <Image
                 src="/csb.webp"
-                width="300"
-                height="300"
+                width={300}
+                height={300}
                 alt="Album 3"
                 className="object-cover w-full h-full group-hover:scale-105 transition-transform duration-300"
               />
