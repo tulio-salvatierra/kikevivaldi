@@ -90,7 +90,7 @@ export default function Hero() {
             </div>
             <div className="flex items-center space-x-2">
               <MapPin className="h-5 w-5 text-red-600" />
-              <span className="text-sm">Midlant, TX.</span>
+              <span className="text-sm">Midland, TX.</span>
             </div>
           </div>
         </div>
@@ -98,7 +98,7 @@ export default function Hero() {
         <div className="relative">
           <div className="relative z-10">
             <Image
-              src={"/hero.jpg"}
+              src="/hero.jpg"
               width={500}
               height={600}
               alt="Kike Vivaldy with guitar"
