@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import './globals.css'
 
 export const metadata: Metadata = {
+  
   title: 'Kike Vivaldy | Artista Colombiano',
   description:
     'Descubre el trabajo de Kike Vivaldy, artista colombiano que fusiona flamenco, jazz y sonidos contemporáneos. Escucha su música, conoce sus proyectos y sigue su trayectoria artística.',
@@ -40,7 +41,10 @@ export const metadata: Metadata = {
     description:
       'Escucha y descubre el trabajo de Kike Vivaldy, una mezcla de flamenco, jazz y sonidos modernos.',
     images: ['/og-kikevivaldy.jpg'],
-    creator: '@kikevivaldy', // si tiene un Twitter
+  },
+  viewport: 'width=device-width, initial-scale=1',
+  alternates: {
+    canonical: 'https://kikevivaldy.com',
   },
   icons: {
     icon: '/favicon.ico', // asegúrate de tener favicon.ico en la carpeta /public
