@@ -1,3 +1,5 @@
+'use client';
+
 import { Guitar } from "lucide-react"
 
 export default function Footer() {
