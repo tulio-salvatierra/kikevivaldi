@@ -35,6 +35,7 @@ export default function Albums() {
           <CardContent className="p-6">
             <div className="aspect-square mb-4 relative overflow-hidden rounded-lg">
               <Image
+              unoptimized
                 src="/sgj.webp"
                 width={300}
                 height={300}
@@ -69,6 +70,7 @@ export default function Albums() {
           <CardContent className="p-6">
             <div className="aspect-square mb-4 relative overflow-hidden rounded-lg">
               <Image
+              unoptimized
                 src="/nf.webp"
                 width={300}
                 height={300}
@@ -103,6 +105,7 @@ export default function Albums() {
           <CardContent className="p-6">
             <div className="aspect-square mb-4 relative overflow-hidden rounded-lg">
               <Image
+              unoptimized
                 src="/csb.webp"
                 width={300}
                 height={300}

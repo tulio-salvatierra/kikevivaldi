@@ -99,6 +99,7 @@ export default function Hero() {
         <div className="relative">
           <div className="relative z-10">
             <Image
+            unoptimized
               src="/hero.jpg"
               width={500}
               height={600}
