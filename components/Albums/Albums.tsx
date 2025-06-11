@@ -36,8 +36,8 @@ export default function Albums() {
             <div className="aspect-square mb-4 relative overflow-hidden rounded-lg">
               <Image
                 src="/sgj.webp"
-                width="300"
-                height="300"
+                width={300}
+                height={300}
                 alt="Album 1"
                 className="object-cover w-full h-full group-hover:scale-105 transition-transform duration-300"
               />

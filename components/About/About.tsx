@@ -74,15 +74,15 @@ export default function About() {
                 <div className="space-y-4">
                   <Image
                     src="/about1.jpeg"
-                    width="200"
-                    height="250"
+                    width={200}
+                    height={250}
                     alt="Kike performing"
                     className="rounded-lg object-cover w-full"
                   />
                   <Image
                     src="/about2.jpeg"
-                    width="200"
-                    height="200"
+                    width={200}
+                    height={200}
                     alt="Guitar close-up"
                     className="rounded-lg object-cover w-full"
                   />
@@ -90,15 +90,15 @@ export default function About() {
                 <div className="space-y-4 mt-8">
                   <Image
                     src="/about3.jpeg"
-                    width="200"
-                    height="200"
+                    width={200}
+                    height={200}
                     alt="Studio session"
                     className="rounded-lg object-cover w-full"
                   />
                   <Image
                     src="/about4.jpeg"
-                    width="200"
-                    height="250"
+                    width={200}
+                    height={250}
                     alt="Live performance"
                     className="rounded-lg object-cover w-full"
                   />

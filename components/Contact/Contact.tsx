@@ -48,7 +48,7 @@ function Contact() {
                   size="sm"
                   className="border-amber-400 text-amber-400 hover:bg-amber-400 hover:text-slate-900"
                 >
-                  <a href="mailto:Kike.vivaldyguitar@gmail.com">Send Message</a>
+                  <a href="mailto:Kike.vivaldyguitar@gmail.com" target="_blank" rel="noopener noreferrer">Send Message</a>
                 </Button>
               </CardContent>
             </Card>
@@ -65,7 +65,7 @@ function Contact() {
                   size="sm"
                   className="border-purple-400 text-purple-400 hover:bg-purple-400 hover:text-slate-900"
                 >
-                  <a href="https://www.threads.com/@kike_vivaldy?xmt=AQF0n-GHFWa6zZ4NcWIgQimuUykEqMBtE6WWaMhF2fd9j3w" target="_blank" rel="noopener noreferrer">Follow</a>
+                  <a href="https://www.instagram.com/kike_vivaldy" target="_blank" rel="noopener noreferrer">Follow</a>
                 </Button>
               </CardContent>
             </Card>
@@ -82,7 +82,7 @@ function Contact() {
                   size="sm"
                   className="border-red-400 text-red-400 hover:bg-red-400 hover:text-slate-900"
                 >
-                  <a href="https://www.youtube.com/@oswaldocamargo9378" target="_blank" rel="noopener noreferrer">Subscribe</a>
+                  <a href="https://www.youtube.com/@kikevivaldy" target="_blank" rel="noopener noreferrer">Subscribe</a>
                 </Button>
               </CardContent>
             </Card>
