@@ -99,8 +99,8 @@ export default function Hero() {
           <div className="relative z-10">
             <Image
               src="/hero.jpg"
-              width="500"
-              height="600"
+              width={500}
+              height={600}
               alt="Kike Vivaldy with guitar"
               className="rounded-2xl shadow-2xl object-cover"
             />
