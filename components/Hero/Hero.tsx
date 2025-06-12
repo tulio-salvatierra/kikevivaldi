@@ -72,7 +72,7 @@ export default function Hero() {
               className="bg-gradient-to-r from-amber-600 to-orange-600 hover:from-amber-700 hover:to-orange-700 text-white"
             >
               <Play className="mr-2 h-5 w-5" />
-              Listen Now
+              <a href='https://open.spotify.com/album/2VdoQJk1Xd0DCAdLRkCy8k?si=YADH3ZVrSI6HiLXgIS_0_w'>Listen Now</a>
             </Button>
             <Button
               variant="outline"
@@ -80,7 +80,7 @@ export default function Hero() {
               className="border-amber-300 text-amber-700 hover:bg-amber-50"
             >
               <Phone className="mr-2 h-5 w-5" />
-              Book your Concert now!
+              <a href="mailto:Kike.vivaldyguitar@gmail.com">Book your Concert now!</a>
             </Button>
           </div>
 
