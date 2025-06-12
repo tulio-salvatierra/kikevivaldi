@@ -1,6 +1,7 @@
 import React from 'react';
 import Image from 'next/image';
 import { Badge } from '@/components/ui/badge';
+import Hero from "./../../public/hero.jpg";
 
 
 export default function About() {
@@ -72,9 +73,8 @@ export default function About() {
             <div className="relative">
               <div className="grid grid-cols-2 gap-4">
                 <div className="space-y-4">
-                  <Image
-                  unoptimized
-                    src="/about1.jpeg"
+                  <img
+                    src={Hero.src}
                     width={200}
                     height={250}
                     alt="Kike performing"
