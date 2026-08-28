@@ -8,8 +8,8 @@ const LINKS = [
 export default function Finale() {
   return (
     <section
-      id="contacto"
-      data-chapter="Contacto"
+      id="contact"
+      data-chapter="Contact"
       className="relative overflow-hidden"
     >
       <div className="relative flex min-h-screen flex-col justify-end">
@@ -22,12 +22,12 @@ export default function Finale() {
         <div className="absolute inset-0 bg-gradient-to-t from-ink via-ink/80 to-ink/40" />
 
         <div className="container relative pb-14 pt-32">
-          <p className="eyebrow mb-8">05 — Contacto</p>
+          <p className="eyebrow mb-8">05 — Contact</p>
 
           <h2 className="display mb-10 text-colossal text-cream">
-            Hagamos
+            Let&apos;s make
             <br />
-            <span className="text-ember">algo bello</span>
+            <span className="text-ember">something beautiful</span>
           </h2>
 
           <div className="mb-20 flex flex-col gap-6 sm:flex-row sm:items-center">
@@ -35,7 +35,7 @@ export default function Finale() {
               href="mailto:Kike.vivaldyguitar@gmail.com"
               className="mono border border-ember bg-ember px-10 py-4 text-center text-[0.7rem] text-ink transition-colors duration-300 hover:bg-transparent hover:text-ember"
             >
-              Reservar un concierto
+              Book a concert
             </a>
             <a
               href="mailto:Kike.vivaldyguitar@gmail.com"
@@ -55,7 +55,7 @@ export default function Finale() {
               </p>
             </div>
 
-            <nav aria-label="Redes sociales" className="flex flex-wrap gap-x-8 gap-y-3">
+            <nav aria-label="Social media" className="flex flex-wrap gap-x-8 gap-y-3">
               {LINKS.map((l) => (
                 <a
                   key={l.label}
@@ -71,7 +71,7 @@ export default function Finale() {
           </div>
 
           <p className="mono mt-12 text-[0.55rem] text-cream-dim/35">
-            © {new Date().getFullYear()} Kike Vivaldy — Todos los derechos reservados
+            © {new Date().getFullYear()} Kike Vivaldy — All rights reserved
           </p>
         </div>
       </div>

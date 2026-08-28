@@ -5,15 +5,17 @@ import { useEffect, useRef, useState } from "react";
 const SOUNDS = [
   {
     name: "Flamenco",
-    es: "La raiz. Compas, palmas y el duende andaluz que adopte como idioma propio.",
+    blurb:
+      "The root. Compas, palmas and the Andalusian duende I adopted as a language of my own.",
   },
   {
     name: "Smooth Jazz",
-    es: "La libertad. Armonias abiertas, improvisacion y espacio para respirar.",
+    blurb:
+      "The freedom. Open harmonies, improvisation and room to breathe.",
   },
   {
     name: "Electro Fusion",
-    es: "El presente. Texturas electronicas bajo cuerdas de nylon.",
+    blurb: "The present. Electronic textures beneath nylon strings.",
   },
 ];
 
@@ -43,7 +45,7 @@ export default function Sound() {
   }, []);
 
   return (
-    <section id="sonido" data-chapter="Sonido" ref={ref} className="relative h-[280vh]">
+    <section id="sound" data-chapter="Sound" ref={ref} className="relative h-[280vh]">
       <div className="sticky top-0 flex h-screen items-center overflow-hidden">
         {/* pinned backdrop with slow drift */}
         <img
@@ -59,7 +61,7 @@ export default function Sound() {
         <div className="absolute inset-0 bg-ink/70" />
 
         <div className="container relative">
-          <p className="eyebrow mb-10">02 — El sonido</p>
+          <p className="eyebrow mb-10">02 — The sound</p>
 
           <ul className="space-y-6 md:space-y-10">
             {SOUNDS.map((s, i) => {
@@ -93,7 +95,7 @@ export default function Sound() {
                       maxHeight: on ? "8rem" : "0",
                     }}
                   >
-                    {s.es}
+                    {s.blurb}
                   </p>
                 </li>
               );

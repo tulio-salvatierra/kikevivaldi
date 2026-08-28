@@ -4,17 +4,17 @@ import { useEffect, useRef, useState } from "react";
 import { useAudio } from "./audio-provider";
 
 const CHAPTERS = [
-  { id: "inicio", label: "Inicio" },
-  { id: "historia", label: "Historia" },
-  { id: "sonido", label: "Sonido" },
-  { id: "discos", label: "Discos" },
+  { id: "home", label: "Home" },
+  { id: "story", label: "Story" },
+  { id: "sound", label: "Sound" },
+  { id: "records", label: "Records" },
   { id: "shows", label: "Shows" },
-  { id: "contacto", label: "Contacto" },
+  { id: "contact", label: "Contact" },
 ];
 
 /** Left-edge chapter rail — doubles as the site's only nav. */
 export function ChapterRail() {
-  const [active, setActive] = useState("inicio");
+  const [active, setActive] = useState("home");
 
   useEffect(() => {
     const obs = new IntersectionObserver(
@@ -34,7 +34,7 @@ export function ChapterRail() {
 
   return (
     <nav
-      aria-label="Secciones"
+      aria-label="Sections"
       className="fixed left-0 top-1/2 z-50 hidden -translate-y-1/2 flex-col gap-4 pl-5 lg:flex"
     >
       {CHAPTERS.map((c, i) => {
@@ -88,7 +88,7 @@ export function FrameCounter() {
       <button
         type="button"
         onClick={toggle}
-        aria-label={playing ? "Silenciar musica" : "Reproducir musica"}
+        aria-label={playing ? "Mute music" : "Play music"}
         className="flex items-end gap-[2px] transition-opacity hover:opacity-70"
       >
         {[0, 1, 2, 3].map((i) => (

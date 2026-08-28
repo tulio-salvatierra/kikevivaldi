@@ -26,28 +26,29 @@ export default function Shows() {
       <div className="container">
         <div className="grid gap-14 lg:grid-cols-12 lg:gap-20">
           <div className="lg:col-span-5">
-            <p className="eyebrow mb-6">04 — En vivo</p>
+            <p className="eyebrow mb-6">04 — Live</p>
             <h2 className="display text-huge mb-8 text-cream">
               Acoustic
               <br />
               <span className="text-ember">Nights</span>
             </h2>
             <p className="max-w-sm text-lg font-light leading-relaxed text-cream-dim">
-              Una guitarra, una sala pequena y nada entre la musica y la gente.
+              One guitar, a small room, and nothing between the music and the
+              people.
             </p>
 
             <a
               href={BOOKING}
               className="mono mt-10 inline-block border border-ember px-8 py-3 text-[0.65rem] text-ember transition-colors duration-300 hover:bg-ember hover:text-ink"
             >
-              Reservar una fecha
+              Book a date
             </a>
           </div>
 
           <div className="lg:col-span-7">
             {SHOWS.length === 0 ? (
               <p className="mono text-[0.7rem] text-cream-dim/60">
-                Proximas fechas por anunciar.
+                New dates to be announced.
               </p>
             ) : (
               <ul>

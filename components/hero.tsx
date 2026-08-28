@@ -190,8 +190,8 @@ export default function Hero() {
   return (
     <section
       ref={sectionRef}
-      id="inicio"
-      data-chapter="Inicio"
+      id="home"
+      data-chapter="Home"
       className="relative h-[100svh] md:h-[320vh]"
     >
       <div
@@ -222,7 +222,7 @@ export default function Hero() {
         {/* copy locked lower-left, never centred over him */}
         <div className="absolute inset-x-0 bottom-0 p-6 pb-16 md:pb-20 lg:pl-44 lg:pr-16">
           <div className="max-w-3xl">
-            <p className="eyebrow mb-5">Guitarrista colombiano · Nova Flamenco</p>
+            <p className="eyebrow mb-5">Colombian guitarist · Nova Flamenco</p>
 
             <h1 className="display text-colossal text-cream">
               <span className="block">KIKE</span>
@@ -245,15 +245,15 @@ export default function Hero() {
             </h1>
 
             <p className="mt-7 max-w-xl text-lg font-light leading-relaxed text-cream-dim md:text-xl">
-              No la toco: la escucho hablar. Flamenco, jazz y Caribe en una
-              sola guitarra.
+              I don&apos;t play her — I listen to her speak. Flamenco, jazz and
+              the Caribbean in a single guitar.
             </p>
           </div>
         </div>
 
         {/* scroll hint */}
         <div className="absolute bottom-6 right-6 flex items-center gap-3 md:bottom-8 md:right-14">
-          <span className="mono text-[0.6rem] text-cream-dim/70">Desliza</span>
+          <span className="mono text-[0.6rem] text-cream-dim/70">Scroll</span>
           <div className="h-8 w-px bg-gradient-to-b from-ember to-transparent" />
         </div>
       </div>

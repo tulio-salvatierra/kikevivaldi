@@ -125,7 +125,7 @@ export default function Loader({ onDone }: { onDone: () => void }) {
 
         <div className="flex items-baseline justify-between">
           <span className="mono text-[0.65rem] text-cream-dim">
-            {armed ? "Listo" : "Afinando"}
+            {armed ? "Ready" : "Tuning"}
           </span>
           <span className="mono text-[0.65rem] text-cream-dim">
             {String(progress).padStart(3, "0")}
@@ -137,7 +137,7 @@ export default function Loader({ onDone }: { onDone: () => void }) {
         type="button"
         onClick={enter}
         disabled={!armed}
-        aria-label="Entrar al sitio y reproducir musica"
+        aria-label="Enter the site and play music"
         className={`mt-14 border border-ember px-9 py-3 transition-all duration-500 ${
           armed
             ? "translate-y-0 opacity-100 hover:bg-ember hover:text-ink"
@@ -145,12 +145,12 @@ export default function Loader({ onDone }: { onDone: () => void }) {
         }`}
       >
         <span className="mono text-[0.7rem] tracking-[0.25em] text-ember transition-colors hover:text-ink">
-          Entrar
+          Enter
         </span>
       </button>
 
       <p className="mono mt-5 text-[0.6rem] text-cream-dim/60">
-        con sonido
+        with sound
       </p>
     </div>
   );

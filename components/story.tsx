@@ -61,42 +61,42 @@ function Stat({
 
 export default function Story() {
   return (
-    <section id="historia" data-chapter="Historia" className="relative py-28 md:py-40">
+    <section id="story" data-chapter="Story" className="relative py-28 md:py-40">
       <div className="container">
         <div className="grid gap-16 lg:grid-cols-12 lg:gap-20">
           {/* text column */}
           <div className="lg:col-span-6 lg:pt-10">
-            <p className="eyebrow mb-6">01 — Historia</p>
+            <p className="eyebrow mb-6">01 — Story</p>
             <h2 className="display text-huge mb-10 text-cream">
-              Nacido entre
+              Born between
               <br />
-              <span className="text-ember">brisa y ritmo</span>
+              <span className="text-ember">breeze and rhythm</span>
             </h2>
 
             <div className="space-y-6 text-lg font-light leading-relaxed text-cream-dim">
               <p>
-                Naci en Cartagena de Indias, donde el mar y la musica viven
-                juntos. La guitarra llego a mis manos cuando era apenas un nino,
-                y desde entonces se volvio mi forma de entender el mundo.
+                I was born in Cartagena de Indias, where the sea and the music
+                live side by side. The guitar reached my hands when I was barely
+                a child, and it has been how I understand the world ever since.
               </p>
               <p>
-                Con el tiempo, encontre en el flamenco un idioma que sentia
-                propio, aunque naci lejos de Andalucia. Lo fusione con mis raices
-                del Caribe y descubri algo nuevo:{" "}
-                <em className="text-cream not-italic">Nova Flamenco</em>. Viaje,
-                toque en calles, restaurantes y escenarios intimos. Cada lugar,
-                una historia.
+                In time I found in flamenco a language that felt like my own,
+                though I was born far from Andalusia. I fused it with my
+                Caribbean roots and found something new:{" "}
+                <em className="text-cream not-italic">Nova Flamenco</em>. I
+                travelled, and played on streets, in restaurants and on intimate
+                stages. Every place, a story.
               </p>
               <p>
-                No busco ser virtuoso. Busco que alguien cierre los ojos al
-                escucharme y se sienta vivo.
+                I am not trying to be a virtuoso. I want someone to close their
+                eyes as they listen, and feel alive.
               </p>
             </div>
 
             <div className="mt-14 grid grid-cols-3 gap-6">
-              <Stat value={10} suffix="+" label="Anos tocando" />
-              <Stat value={3} label="Discos" />
-              <Stat value={2} label="Continentes" />
+              <Stat value={10} suffix="+" label="Years playing" />
+              <Stat value={3} label="Records" />
+              <Stat value={2} label="Continents" />
             </div>
           </div>
 
@@ -106,7 +106,7 @@ export default function Story() {
               <figure className="col-span-8 overflow-hidden">
                 <img
                   src="/media/four-seasons.jpg"
-                  alt="Kike Vivaldy tocando en el lobby del Four Seasons"
+                  alt="Kike Vivaldy playing in the Four Seasons lobby"
                   loading="lazy"
                   className="aspect-[4/5] w-full object-cover grayscale-[0.15] transition-[filter,transform] duration-700 hover:scale-[1.02] hover:grayscale-0"
                 />
@@ -118,7 +118,7 @@ export default function Story() {
               <figure className="col-span-4 self-end overflow-hidden">
                 <img
                   src="/media/portrait.jpg"
-                  alt="Retrato de estudio de Kike Vivaldy"
+                  alt="Studio portrait of Kike Vivaldy"
                   loading="lazy"
                   className="aspect-square w-full object-cover object-top transition-[filter] duration-700"
                 />
@@ -127,7 +127,7 @@ export default function Story() {
               <figure className="col-span-12 mt-2 overflow-hidden">
                 <img
                   src="/media/festival.jpg"
-                  alt="Kike Vivaldy tocando en el Gypsy Jazz Festival"
+                  alt="Kike Vivaldy playing at the Gypsy Jazz Festival"
                   loading="lazy"
                   className="aspect-[16/10] w-full object-cover transition-transform duration-700 hover:scale-[1.02]"
                 />
