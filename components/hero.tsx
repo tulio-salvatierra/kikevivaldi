@@ -13,6 +13,7 @@ const NAME = "VIVALDY";
  */
 export default function Hero() {
   const sectionRef = useRef<HTMLElement | null>(null);
+  const paneRef = useRef<HTMLDivElement | null>(null);
   const videoRef = useRef<HTMLVideoElement | null>(null);
   const targetRef = useRef(0);
   const currentRef = useRef(0);
@@ -28,21 +29,73 @@ export default function Hero() {
 
     const onScroll = () => {
       const rect = section.getBoundingClientRect();
-      const scrollable = section.offsetHeight - window.innerHeight;
+      // Measure the sticky pane rather than innerHeight: on mobile the URL bar
+      // collapsing changes innerHeight mid-scroll and skews the progress.
+      const pane = paneRef.current?.offsetHeight || window.innerHeight;
+      const scrollable = section.offsetHeight - pane;
       if (scrollable <= 0) return;
       const p = Math.min(1, Math.max(0, -rect.top / scrollable));
       targetRef.current = p;
       setRevealed(Math.floor(p * NAME.length * 1.35));
     };
 
+    // iOS Safari will not decode, paint or seek a video that has never played,
+    // and it ignores preload="auto" — duration stays NaN and nothing scrubs.
+    // A muted playsInline video may autoplay without a gesture, so nudging
+    // play/pause once primes the decoder. Low Power Mode rejects that, so fall
+    // back to priming on the visitor's first touch.
+    let primed = false;
+    const prime = () => {
+      if (primed) return;
+      primed = true;
+      const p = video.play();
+      const settle = () => {
+        video.pause();
+        onScroll();
+      };
+      if (p && typeof p.then === "function") {
+        p.then(settle).catch(() => {
+          // Autoplay refused; let the next real gesture try again.
+          primed = false;
+        });
+      } else {
+        settle();
+      }
+    };
+
+    // Mobile drops currentTime writes issued while a seek is already in
+    // flight, so only ever have one outstanding. The watchdog covers seeked
+    // never firing, which iOS does under load.
+    let seeking = false;
+    let seekAt = 0;
+    const onSeeking = () => {
+      seeking = true;
+      seekAt = performance.now();
+    };
+    const onSeeked = () => {
+      seeking = false;
+    };
+
+    const seekTo = (t: number) => {
+      if (typeof video.fastSeek === "function") {
+        // The clip is all-keyframe, so fastSeek lands exactly and costs less.
+        video.fastSeek(t);
+      } else {
+        video.currentTime = t;
+      }
+    };
+
     // Ease toward the target so the scrub glides instead of snapping.
     const tick = () => {
       const duration = video.duration;
-      if (duration && !Number.isNaN(duration)) {
+      if (duration && !Number.isNaN(duration) && video.readyState >= 1) {
+        // Advance every frame even while a seek is pending, so the eased
+        // position never falls behind the scroll.
         currentRef.current += (targetRef.current - currentRef.current) * 0.12;
-        const t = currentRef.current * duration;
-        if (Math.abs(video.currentTime - t) > 0.01) {
-          video.currentTime = t;
+        const t = Math.min(currentRef.current * duration, duration - 0.05);
+        const stalled = seeking && performance.now() - seekAt > 250;
+        if ((!seeking || stalled) && Math.abs(video.currentTime - t) > 0.03) {
+          seekTo(t);
         }
       }
       rafRef.current = requestAnimationFrame(tick);
@@ -51,17 +104,27 @@ export default function Hero() {
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
     window.addEventListener("resize", onScroll);
-
-    if (quiet) {
-      // No scrubbing for reduced-motion users — just show a still frame.
-      video.currentTime = 0.1;
-    } else {
+    video.addEventListener("seeking", onSeeking);
+    video.addEventListener("seeked", onSeeked);
+    video.addEventListener("loadedmetadata", onScroll);
+    // Reduced-motion users get no scrubbing and no priming: with the video
+    // never played the poster stays up, which is the still frame we want.
+    if (!quiet) {
+      // touchstart/pointerdown are the gestures iOS accepts for playback.
+      window.addEventListener("touchstart", prime, { passive: true });
+      window.addEventListener("pointerdown", prime);
+      prime();
       rafRef.current = requestAnimationFrame(tick);
     }
 
     return () => {
       window.removeEventListener("scroll", onScroll);
       window.removeEventListener("resize", onScroll);
+      window.removeEventListener("touchstart", prime);
+      window.removeEventListener("pointerdown", prime);
+      video.removeEventListener("seeking", onSeeking);
+      video.removeEventListener("seeked", onSeeked);
+      video.removeEventListener("loadedmetadata", onScroll);
       if (rafRef.current) cancelAnimationFrame(rafRef.current);
     };
   }, []);
@@ -73,7 +136,13 @@ export default function Hero() {
       data-chapter="Inicio"
       className="relative h-[320vh]"
     >
-      <div className="sticky top-0 h-screen w-full overflow-hidden vignette">
+      <div
+        ref={paneRef}
+        className="sticky top-0 h-screen w-full overflow-hidden vignette"
+      >
+        {/* disableRemotePlayback keeps iOS from offering AirPlay on a
+            decorative clip; x5-playsinline covers Android WeChat/QQ browsers
+            that would otherwise force a fullscreen native player. */}
         <video
           ref={videoRef}
           src="/media/hero-scrub.mp4"
@@ -82,6 +151,9 @@ export default function Hero() {
           playsInline
           preload="auto"
           aria-hidden="true"
+          disableRemotePlayback
+          x5-playsinline=""
+          controls={false}
           className="h-full w-full object-cover"
         />
 
