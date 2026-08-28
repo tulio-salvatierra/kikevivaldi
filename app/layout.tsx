@@ -1,64 +1,55 @@
-import type { Metadata } from 'next'
-import './globals.css'
+import type { Metadata } from "next";
+import "@fontsource/big-shoulders-display/600";
+import "@fontsource/big-shoulders-display/800";
+import "@fontsource/newsreader/300";
+import "@fontsource/newsreader/400";
+import "@fontsource/newsreader/400-italic";
+import "@fontsource/ibm-plex-mono/400";
+import "@fontsource/ibm-plex-mono/500";
+import "./globals.css";
+
+const SITE = "https://www.kikevivaldy.com";
 
 export const metadata: Metadata = {
-  
-  title: 'Kike Vivaldy | Artista Colombiano',
+  metadataBase: new URL(SITE),
+  title: "Kike Vivaldy — Nova Flamenco",
   description:
-    'Descubre el trabajo de Kike Vivaldy, artista colombiano que fusiona flamenco, jazz y sonidos contemporáneos. Escucha su música, conoce sus proyectos y sigue su trayectoria artística.',
-  generator: 'tuliosalvatierra.com',
+    "Guitarrista colombiano. Flamenco, jazz y musica latina fundidos en Nova Flamenco. Conciertos, discos y booking.",
   keywords: [
-    'Kike Vivaldy',
-    'música colombiana',
-    'flamenco jazz',
-    'guitarra española',
-    'artista latino',
-    'música independiente',
-    'nuevo álbum',
+    "Kike Vivaldy",
+    "Nova Flamenco",
+    "guitarrista colombiano",
+    "flamenco jazz",
+    "live guitar",
+    "Midland Texas",
   ],
-  authors: [{ name: 'Kike Vivaldy' }],
-  creator: 'Kike Vivaldy',
   openGraph: {
-    title: 'Kike Vivaldy | Artista Colombiano',
+    title: "Kike Vivaldy — Nova Flamenco",
     description:
-      'Música original y vibrante desde Colombia. Explora los sonidos de Kike Vivaldy.',
-    url: 'https://kikevivaldy.com', // cambia si usas otro dominio
-    siteName: 'Kike Vivaldy',
-    images: [
-      {
-        url: '/og-kikevivaldy.jpg', // Asegúrate de tener esta imagen en /public
-        width: 1200,
-        height: 630,
-        alt: 'Kike Vivaldy tocando guitarra',
-      },
-    ],
-    type: 'website',
-    locale: 'en_US',
+      "Guitarrista colombiano. Flamenco, jazz y musica latina fundidos en Nova Flamenco.",
+    url: SITE,
+    siteName: "Kike Vivaldy",
+    images: [{ url: "/og-kikevivaldy.jpg", width: 1200, height: 630 }],
+    locale: "es_ES",
+    type: "website",
   },
   twitter: {
-    card: 'summary_large_image',
-    title: 'Kike Vivaldy | Artista Colombiano',
-    description:
-      'Escucha y descubre el trabajo de Kike Vivaldy, una mezcla de flamenco, jazz y sonidos modernos.',
-    images: ['/og-kikevivaldy.jpg'],
+    card: "summary_large_image",
+    title: "Kike Vivaldy — Nova Flamenco",
+    description: "Guitarrista colombiano. Flamenco, jazz y musica latina.",
+    images: ["/og-kikevivaldy.jpg"],
   },
-  viewport: 'width=device-width, initial-scale=1',
-  alternates: {
-    canonical: 'https://kikevivaldy.com',
-  },
-  icons: {
-    icon: '/favicon.ico', // asegúrate de tener favicon.ico en la carpeta /public
-  },
-}
+  icons: { icon: "/favicon.ico" },
+};
 
 export default function RootLayout({
   children,
-}: Readonly<{
-  children: React.ReactNode
-}>) {
+}: {
+  children: React.ReactNode;
+}) {
   return (
-    <html lang="en">
-      <body>{children}</body>
+    <html lang="es">
+      <body className="grain bg-ink text-cream antialiased">{children}</body>
     </html>
-  )
+  );
 }
