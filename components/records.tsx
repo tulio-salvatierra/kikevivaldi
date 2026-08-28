@@ -56,7 +56,7 @@ export default function Records() {
                   src={r.cover}
                   alt={`Portada de ${r.title}`}
                   loading="lazy"
-                  className="aspect-square w-full object-cover transition-transform duration-[900ms] ease-out group-hover:scale-105"
+                  className="aspect-square w-full object-cover transition-transform duration-900 ease-out group-hover:scale-105"
                 />
                 <div className="absolute inset-0 bg-ink/40 opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
                 <div className="absolute inset-0 flex items-center justify-center">

@@ -13,6 +13,9 @@ const config: Config = {
       screens: { "2xl": "1400px" },
     },
     extend: {
+      transitionDuration: {
+        "900": "900ms",
+      },
       colors: {
         ink: {
           DEFAULT: "rgb(var(--ink) / <alpha-value>)",

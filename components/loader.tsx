@@ -99,7 +99,7 @@ export default function Loader({ onDone }: { onDone: () => void }) {
 
   return (
     <div
-      className={`fixed inset-0 z-[100] flex flex-col items-center justify-center bg-ink transition-opacity duration-[900ms] ${
+      className={`fixed inset-0 z-[100] flex flex-col items-center justify-center bg-ink transition-opacity duration-900 ${
         leaving ? "pointer-events-none opacity-0" : "opacity-100"
       }`}
     >
