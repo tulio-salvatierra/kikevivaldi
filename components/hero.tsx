@@ -4,12 +4,22 @@ import { useEffect, useRef, useState } from "react";
 
 const NAME = "VIVALDY";
 
+// Matches Tailwind's `md`, so the behaviour below and the height classes on
+// the section stay in agreement.
+const WIDE = "(min-width: 768px)";
+
 /**
  * Hero: the page's thesis.
  *
- * Scrolling scrubs the real performance footage frame by frame rather than
- * playing it — the visitor turns the clip like a film reel. The video is
- * encoded all-keyframe so seeking is instant.
+ * On desktop, scrolling scrubs the real performance footage frame by frame
+ * rather than playing it — the visitor turns the clip like a film reel, and the
+ * all-keyframe encode makes seeking instant.
+ *
+ * Mobile browsers refuse to drive a video that way: iOS will not decode or seek
+ * a clip that has never played, and it drops seeks issued while another is in
+ * flight. So phones get the honest version instead — the clip simply loops in a
+ * single-screen hero, with the name shown outright rather than revealed by
+ * scroll.
  */
 export default function Hero() {
   const sectionRef = useRef<HTMLElement | null>(null);
@@ -19,13 +29,63 @@ export default function Hero() {
   const currentRef = useRef(0);
   const rafRef = useRef<number | null>(null);
   const [revealed, setRevealed] = useState(0);
+  // null until mounted: the server cannot know the viewport, so behaviour is
+  // decided after hydration while the layout itself stays pure CSS.
+  const [wide, setWide] = useState<boolean | null>(null);
 
   useEffect(() => {
+    const mql = window.matchMedia(WIDE);
+    const apply = () => setWide(mql.matches);
+    apply();
+    mql.addEventListener("change", apply);
+    return () => mql.removeEventListener("change", apply);
+  }, []);
+
+  useEffect(() => {
+    if (wide === null) return;
     const video = videoRef.current;
     const section = sectionRef.current;
     if (!video || !section) return;
 
     const quiet = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+    // Mobile: loop the clip and show the name outright. No scrubbing at all.
+    if (!wide) {
+      setRevealed(NAME.length);
+      video.loop = true;
+      if (quiet) return; // poster only, nothing to play
+
+      const play = () => {
+        video.play().catch(() => {
+          /* Low Power Mode; the gesture listeners below retry. */
+        });
+      };
+
+      // Pause while offscreen so a looping clip is not draining the battery
+      // through the rest of the page.
+      const io = new IntersectionObserver(
+        ([entry]) => (entry.isIntersecting ? play() : video.pause()),
+        { threshold: 0.01 },
+      );
+      io.observe(section);
+
+      // Returning from another tab or app leaves the clip paused on iOS.
+      const onVisibility = () => {
+        if (document.hidden) video.pause();
+        else play();
+      };
+
+      window.addEventListener("touchstart", play, { passive: true });
+      document.addEventListener("visibilitychange", onVisibility);
+      play();
+
+      return () => {
+        io.disconnect();
+        window.removeEventListener("touchstart", play);
+        document.removeEventListener("visibilitychange", onVisibility);
+        video.pause();
+      };
+    }
 
     const onScroll = () => {
       const rect = section.getBoundingClientRect();
@@ -39,11 +99,8 @@ export default function Hero() {
       setRevealed(Math.floor(p * NAME.length * 1.35));
     };
 
-    // iOS Safari will not decode, paint or seek a video that has never played,
-    // and it ignores preload="auto" — duration stays NaN and nothing scrubs.
-    // A muted playsInline video may autoplay without a gesture, so nudging
-    // play/pause once primes the decoder. Low Power Mode rejects that, so fall
-    // back to priming on the visitor's first touch.
+    // Safari is reluctant to decode a video that has never played, so nudge
+    // play/pause once to prime it before the first seek. Harmless elsewhere.
     let primed = false;
     const prime = () => {
       if (primed) return;
@@ -63,9 +120,8 @@ export default function Hero() {
       }
     };
 
-    // Mobile drops currentTime writes issued while a seek is already in
-    // flight, so only ever have one outstanding. The watchdog covers seeked
-    // never firing, which iOS does under load.
+    // A currentTime write issued while a seek is in flight can be dropped, so
+    // only ever have one outstanding. The watchdog covers seeked never firing.
     let seeking = false;
     let seekAt = 0;
     const onSeeking = () => {
@@ -127,18 +183,20 @@ export default function Hero() {
       video.removeEventListener("loadedmetadata", onScroll);
       if (rafRef.current) cancelAnimationFrame(rafRef.current);
     };
-  }, []);
+  }, [wide]);
 
+  // The tall scroll track exists only to drive the scrub, so phones get a
+  // single screen instead of three of pinned, looping video.
   return (
     <section
       ref={sectionRef}
       id="inicio"
       data-chapter="Inicio"
-      className="relative h-[320vh]"
+      className="relative h-[100svh] md:h-[320vh]"
     >
       <div
         ref={paneRef}
-        className="sticky top-0 h-screen w-full overflow-hidden vignette"
+        className="sticky top-0 h-[100svh] w-full overflow-hidden vignette md:h-screen"
       >
         {/* disableRemotePlayback keeps iOS from offering AirPlay on a
             decorative clip; x5-playsinline covers Android WeChat/QQ browsers
