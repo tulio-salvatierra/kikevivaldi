@@ -124,12 +124,15 @@ export default function Story() {
                 />
               </figure>
 
+              {/* Portrait source in a 16/10 frame: anchor the crop to the top,
+                  or it lands on his torso and loses both his face and the
+                  festival banner the caption points at. */}
               <figure className="col-span-12 mt-2 overflow-hidden">
                 <img
                   src="/media/festival.jpg"
                   alt="Kike Vivaldy playing at the Gypsy Jazz Festival"
                   loading="lazy"
-                  className="aspect-[16/10] w-full object-cover transition-transform duration-700 hover:scale-[1.02]"
+                  className="aspect-[16/10] w-full object-cover object-top transition-transform duration-700 hover:scale-[1.02]"
                 />
                 <figcaption className="mono mt-2 text-[0.55rem] text-cream-dim/50">
                   Gypsy Jazz Festival
